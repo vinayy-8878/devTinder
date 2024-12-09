@@ -11,4 +11,15 @@ const signUpValidation=(req)=>{
         throw new Error("Please enter a strong password.")
     }
 }
- module.exports={signUpValidation}
+
+
+const  loginValidation=(req)=>{
+    const {emailId,password}=req.body;
+   if(!validator.isEmail(emailId) || !emailId){
+        throw new Error("Please enter a valid email.")
+    }
+    else if(!password){
+        throw new Error("Please enter your password.")
+    }
+}
+ module.exports={signUpValidation,loginValidation}
