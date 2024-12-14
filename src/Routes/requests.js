@@ -37,7 +37,19 @@ if(!toUser){
         status,
       });
       const data = await connectionRequest.save();
-      res.json({ message:req.user.firstName+" is "+status+" in "+toUser.firstName, data });
+      if (status === 'interested') {
+        res.json({
+          message: req.user.firstName + " is " + status + " in " + toUser.firstName,
+          data
+        });
+      } else if (status === 'ignored') {
+        res.json({
+          message: req.user.firstName + " has ignored " + toUser.firstName,
+          data
+        });
+      } else {
+        res.status(400).json({ message: "Invalid status" });
+      }
     } catch (err) {
       res.status(400).send(err.message);
     }

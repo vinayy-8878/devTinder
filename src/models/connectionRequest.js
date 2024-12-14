@@ -26,6 +26,7 @@ connectionSchema.pre("save",function (next){
   if(connectionRequestFromAndTo.fromUserId.equals(connectionRequestFromAndTo.toUserId)){
     throw new Error("You cannnot send request to yourself.")
   }
+  next();
 })
-
+connectionSchema.index({fromUserId:1,toUserId:1})
 module.exports = mongoose.model("ConnectionRequest", connectionSchema);
