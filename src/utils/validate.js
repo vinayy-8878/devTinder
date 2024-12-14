@@ -22,4 +22,12 @@ const  loginValidation=(req)=>{
         throw new Error("Please enter your password.")
     }
 }
- module.exports={signUpValidation,loginValidation}
+
+const validateEditProfileData=(req)=>{
+const allowedEditFields=["firstName","lastName","emailId","age","gender","skills","about","photoUrl"]
+console.log(req.body)
+const isEditAllowed=Object.keys(req.body).every(field=>allowedEditFields.includes(field));
+
+return isEditAllowed;
+}
+ module.exports={signUpValidation,loginValidation,validateEditProfileData}
