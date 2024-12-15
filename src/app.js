@@ -8,10 +8,11 @@ app.use(cookie());
 const authRouter=require("./Routes/auth")
 const profileRouter=require("./Routes/profile")
 const requestRouter=require("./Routes/requests")
-
+const userRouter=require("./Routes/user.js")
 app.use("/",authRouter);
 app.use("/",profileRouter);
 app.use("/",requestRouter);
+app.use("/",userRouter);
 connectDB()
   .then(() => {
     console.log("Database connected successfully");
