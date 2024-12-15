@@ -2,8 +2,13 @@ const express = require("express");
 const connectDB = require("./config/database");
 const cookie=require("cookie-parser");
 const app = express();
+app.use(cors({
+  origin:"https://dev-tinderr-project.netlify.app/",
+  credentials:true
+}))
 app.use(express.json());
 app.use(cookie());
+const cors= require('cors')
 
 const authRouter=require("./Routes/auth")
 const profileRouter=require("./Routes/profile")
